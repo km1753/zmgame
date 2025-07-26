@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zm公益云电脑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 首页样式 */
+        .homepage {
+            width: 100vw;
+            height: 100vh;
+            background-image: url('https://img.shetu66.com/2023/07/24/1690167615927692.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .test-version {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 0.8rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .title {
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .title:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .home-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .start-btn {
+            background-color: #4CAF50;
+        }
+
+        .donate-btn {
+            background-color: #FF5722;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .start-btn:hover {
+            background-color: #45a049;
+        }
+
+        .donate-btn:hover {
+            background-color: #F4511E;
+        }
+
+        /* 联系页面样式 */
+        .contact-page, .donate-page {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background-color: #f5f5f5;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .contact-card, .donate-card {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.5s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .contact-info, .donate-info {
+            font-size: 1.5rem;
+            line-height: 2;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p, .donate-info p {
+            margin: 1rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p:hover, .donate-info p:hover {
+            color: #4CAF50;
+        }
+
+        .contact-info span, .donate-info span {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .back-btn {
+            padding: 0.8rem 1.8rem;
+            font-size: 1rem;
+            background-color: #607D8B;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .back-btn:hover {
+            background-color: #546E7A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .donate-code-input {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            transition: border-color 0.3s ease;
+        }
+
+        .donate-code-input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .verify-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        .verify-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- 首页 -->
+    <div class="homepage" id="homepage">
+        <div class="test-version">本站为测试版本，以后将持续更新</div>
+        <h1 class="title">zm公益云电脑</h1>
+        <div class="btn-container">
+            <button class="home-btn start-btn" id="startBtn">免费开始</button>
+            <button class="home-btn donate-btn" id="donateBtn">捐赠我们</button>
+        </div>
+    </div>
+
+    <!-- 联系页面 -->
+    <div class="contact-page" id="contactPage">
+        <div class="contact-card" id="contactCard">
+            <div class="contact-info">
+                <p>如要使用请加微信：<span>M_150123</span></p>
+                <p>客服邮箱：<span>linsu2025@outlook.com</span></p>
+            </div>
+            <button class="back-btn" id="contactBackBtn">返回</button>
+        </div>
+    </div>
+
+    <!-- 捐赠页面 -->
+    <div class="donate-page" id="donatePage">
+        <div class="donate-card" id="donateCard">
+            <div class="donate-info">
+                <p>捐赠方式：微信：<span>M_150123</span></p>
+                <p>如果你捐赠完了，请输入捐赠码</p>
+            </div>
+            <input type="text" class="donate-code-input" id="donateCode" placeholder="请输入捐赠码">
+            <button class="verify-btn" id="verifyBtn">验证捐赠码</button>
+            <button class="back-btn" id="donateBackBtn">返回</button>
+        </div>
+    </div>
+
+    <script>
+        // 获取元素
+        const startBtn = document.getElementById('startBtn');
+        const donateBtn = document.getElementById('donateBtn');
+        const contactBackBtn = document.getElementById('contactBackBtn');
+        const donateBackBtn = document.getElementById('donateBackBtn');
+        const verifyBtn = document.getElementById('verifyBtn');
+        const donateCode = document.getElementById('donateCode');
+        
+        const homepage = document.getElementById('homepage');
+        const contactPage = document.getElementById('contactPage');
+        const donatePage = document.getElementById('donatePage');
+        const contactCard = document.getElementById('contactCard');
+        const donateCard = document.getElementById('donateCard');
+
+        // 页面切换函数
+        function showPage(targetPage, targetCard) {
+            // 隐藏所有页面
+            homepage.style.display = 'none';
+            contactPage.style.display = 'none';
+            donatePage.style.display = 'none';
+            
+            // 重置所有卡片动画
+            contactCard.style.transform = 'translateY(20px)';
+            contactCard.style.opacity = '0';
+            donateCard.style.transform = 'translateY(20px)';
+            donateCard.style.opacity = '0';
+            
+            // 显示目标页面
+            targetPage.style.display = 'flex';
+            
+            // 触发卡片动画
+            setTimeout(() => {
+                targetCard.style.transform = 'translateY(0)';
+                targetCard.style.opacity = '1';
+            }, 100);
+        }
+
+        // 绑定事件监听器
+        startBtn.addEventListener('click', () => showPage(contactPage, contactCard));
+        donateBtn.addEventListener('click', () => showPage(donatePage, donateCard));
+        contactBackBtn.addEventListener('click', () => showPage(homepage, null));
+        donateBackBtn.addEventListener('click', () => showPage(homepage, null));
+
+        // 捐赠码验证
+        verifyBtn.addEventListener('click', () => {
+            const code = donateCode.value.trim();
+            
+            if (code === '13409') {
+                alert('谢谢！！老板');
+                donateCode.value = ''; // 清空输入框
+            } else {
+                alert('捐赠码错误，请重新输入');
+            }
+        });
+
+        // 回车键触发验证
+        donateCode.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                verifyBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
